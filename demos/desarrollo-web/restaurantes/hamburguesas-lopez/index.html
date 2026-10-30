@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Humo y Fuego | Hamburguesas gourmet al carbón</title>
+<meta name="description" content="Hamburguesas gourmet asadas al carbón. Explora el menú, pide para recoger o a domicilio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+:root{--bg:#0F0B09;--bg2:#17100C;--card:#1F1611;--ink:#F4E9DB;--mut:#B9A592;--amb:#FF8A1F;--amb2:#FFB347;--line:rgba(244,233,219,.14);
+--wood:repeating-linear-gradient(92deg,rgba(0,0,0,.14) 0 2px,transparent 2px 9px),repeating-linear-gradient(88deg,rgba(255,255,255,.035) 0 1px,transparent 1px 23px),linear-gradient(135deg,#3B2416,#2A180F 55%,#34200F)}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:1.05rem;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,p,ul{margin:0}ul{padding:0;list-style:none}a{color:inherit}button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--amb2);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:1.5rem}
+.bn{font-family:'Bebas Neue','Impact',sans-serif;font-weight:400;letter-spacing:.03em}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;border:2px solid var(--amb);border-radius:4px;background:var(--amb);color:#1a0d04;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.9rem;text-decoration:none;cursor:pointer;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,background .3s,color .3s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 28px -12px var(--amb)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}.btn.ghost:hover{border-color:var(--amb);box-shadow:none}
+.btn.sm{padding:.55rem 1.1rem;font-size:.78rem}
+
+/* header */
+.hd{position:fixed;inset:0 0 auto 0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .4s,box-shadow .4s}
+.hd.sc{background:rgba(15,11,9,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 12px 26px -18px #000}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px;max-width:1180px;margin-inline:auto;padding-inline:1.5rem}
+.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;font-size:1.9rem;line-height:1}
+.logo svg{width:24px;height:30px}
+.links{display:flex;align-items:center;gap:2rem}
+.links a:not(.btn){position:relative;text-decoration:none;font-size:.8rem;font-weight:600;letter-spacing:.16em;padding:.3rem 0}
+.links a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--amb);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.links a:not(.btn):hover::after{transform:scaleX(1)}
+.cn{display:none;min-width:1.25rem;height:1.25rem;padding:0 .3rem;border-radius:99px;background:#1a0d04;color:var(--amb2);font-size:.75rem;line-height:1.25rem;text-align:center}
+.cn.on{display:inline-block;animation:pop .45s cubic-bezier(.2,.9,.3,1.4)}
+.bg{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;position:relative}
+.bg i{position:absolute;left:11px;right:11px;height:2px;background:var(--ink);transition:transform .35s,opacity .25s,top .35s}
+.bg i:nth-child(1){top:15px}.bg i:nth-child(2){top:21px}.bg i:nth-child(3){top:27px}
+.bg[aria-expanded="true"] i:nth-child(1){top:21px;transform:rotate(45deg)}.bg[aria-expanded="true"] i:nth-child(2){opacity:0}.bg[aria-expanded="true"] i:nth-child(3){top:21px;transform:rotate(-45deg)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;min-height:min(100svh,860px);display:flex;align-items:center;padding:calc(74px + 2rem) 0 4rem;background:radial-gradient(90% 70% at 78% 55%,rgba(255,138,31,.26),transparent 62%),var(--bg)}
+.hero::before{content:"";position:absolute;inset:0;background:var(--wood);opacity:.18;-webkit-mask-image:linear-gradient(90deg,transparent 35%,#000);mask-image:linear-gradient(90deg,transparent 35%,#000)}
+.hg{position:relative;display:grid;grid-template-columns:1fr 1.05fr;gap:2rem;align-items:center;width:100%}
+.eyebrow{display:flex;align-items:center;gap:.8rem;color:var(--amb2);font-size:.8rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+.eyebrow::before{content:"";width:2.4rem;height:2px;background:var(--amb)}
+.hero h1{margin-top:1rem;font-size:clamp(3.6rem,9.4vw,7.6rem);line-height:.92}
+.hero h1 em{font-style:normal;color:var(--amb)}
+.ln{display:block;overflow:hidden;padding-bottom:.04em}.ln>span{display:inline-block;animation:up 1s cubic-bezier(.2,.7,.2,1) both}.ln:nth-child(2)>span{animation-delay:.15s}.ln:nth-child(3)>span{animation-delay:.3s}
+.lede{margin-top:1.4rem;max-width:42ch;color:var(--mut);font-size:1.15rem}
+.fd{animation:fade .9s cubic-bezier(.2,.7,.2,1) both}.d1{animation-delay:.45s}.d2{animation-delay:.65s}
+.hero .btn{margin-top:2rem}
+.pic{position:relative;animation:rise 1.2s cubic-bezier(.2,.7,.2,1) .2s both}
+.pic svg{width:100%;height:auto;display:block;overflow:visible;filter:drop-shadow(0 40px 40px rgba(0,0,0,.6))}
+.smk{position:absolute;left:50%;top:6%;width:60%;height:40%;pointer-events:none;transform:translateX(-50%)}
+.smk i{position:absolute;bottom:0;left:var(--l);width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,rgba(244,233,219,.34),transparent 68%);filter:blur(10px);opacity:0;animation:smoke var(--t) ease-out var(--d) infinite}
+.scroll{position:absolute;left:50%;bottom:1.4rem;transform:translateX(-50%);font-size:.7rem;letter-spacing:.3em;color:var(--mut)}
+.scroll::after{content:"";display:block;width:1px;height:34px;margin:.5rem auto 0;background:linear-gradient(var(--amb),transparent);animation:drip 2s ease-in-out infinite}
+
+/* secciones */
+.sec{padding-block:clamp(4.5rem,9vw,7.5rem)}.alt{background:var(--bg2)}
+.ct{text-align:center}.ct .eyebrow{justify-content:center}.ct .eyebrow::after{content:"";width:2.4rem;height:2px;background:var(--amb)}
+.h2{margin-top:.8rem;font-size:clamp(2.6rem,6vw,4.4rem);line-height:1}
+.sub{margin:.9rem auto 0;max-width:52ch;color:var(--mut)}
+.rv{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}.js .rv{opacity:0;transform:translateY(22px)}.js .rv.in{opacity:1;transform:none}
+
+/* menú */
+.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:3rem}
+.mc{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s,box-shadow .4s}
+.mc:hover{transform:translateY(-8px);border-color:var(--amb);box-shadow:0 26px 40px -26px var(--amb)}
+.mp{position:relative;aspect-ratio:1/.82;background:var(--wood);display:grid;place-items:center;overflow:hidden}
+.mp svg{width:84%;height:auto;transition:transform .6s cubic-bezier(.2,.8,.2,1)}.mc:hover .mp svg{transform:scale(1.07) rotate(-2deg)}
+.tg{position:absolute;top:.8rem;left:.8rem;padding:.2rem .7rem;border-radius:99px;background:var(--amb);color:#1a0d04;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.mb{display:flex;flex-direction:column;flex:1;padding:1.2rem 1.3rem 1.4rem}
+.mb h3{font-size:1.75rem;line-height:1}.mb p{margin-top:.5rem;color:var(--mut);font-size:.95rem;flex:1}
+.mf{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin-top:1.1rem}
+.pr{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;color:var(--amb2);line-height:1}.pr small{font-family:'DM Sans',sans-serif;font-size:.7rem;color:var(--mut);margin-left:.2rem}
+.ab{padding:.6rem 1rem;border:2px solid var(--amb);border-radius:4px;background:transparent;color:var(--amb2);font-weight:700;font-size:.75rem;letter-spacing:.14em;cursor:pointer;transition:background .25s,color .25s,transform .3s cubic-bezier(.2,.9,.3,1.4)}
+.ab:hover{background:var(--amb);color:#1a0d04}.ab.ok{background:var(--amb2);border-color:var(--amb2);color:#1a0d04;animation:pop .45s cubic-bezier(.2,.9,.3,1.4)}
+.mn{margin-top:1.6rem;text-align:center;color:var(--mut);font-size:.92rem}
+
+/* nosotros */
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3.2rem;position:relative}
+.pg::before{content:"";position:absolute;left:12%;right:12%;top:54px;border-top:2px dashed var(--line)}
+.st{position:relative;text-align:center;padding:0 1.4rem}
+.ic{width:108px;height:108px;margin:0 auto 1.3rem;border-radius:50%;background:var(--card);border:2px solid var(--amb);display:grid;place-items:center;position:relative;transition:transform .45s cubic-bezier(.2,.9,.3,1.4),box-shadow .45s}
+.st:hover .ic{transform:scale(1.08);box-shadow:0 0 0 8px rgba(255,138,31,.14)}
+.ic svg{width:50px;height:50px}.st h3{font-size:1.9rem;line-height:1}.st p{margin-top:.5rem;color:var(--mut);font-size:.98rem}
+.nm{position:absolute;top:-6px;right:-6px;width:32px;height:32px;border-radius:50%;background:var(--amb);color:#1a0d04;font-family:'Bebas Neue',sans-serif;font-size:1.2rem;line-height:32px}
+.js .pg .rv{transition-delay:calc(var(--i)*140ms)}
+.wb{margin-top:3.4rem;border-radius:6px;background:var(--wood);border:1px solid var(--line);padding:2rem;display:flex;flex-wrap:wrap;justify-content:space-around;gap:1.6rem;text-align:center}
+.wb b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:2.8rem;line-height:1;color:var(--amb2)}.wb span{color:var(--mut);font-size:.9rem}
+
+/* servicio */
+.sv{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.6rem}
+.sc2{padding:2rem 1.6rem;text-align:center;border:1px solid var(--line);border-radius:6px;background:var(--card);transition:transform .35s,border-color .35s}
+.sc2:hover{transform:translateY(-6px);border-color:var(--amb)}
+.sc2 svg{width:56px;height:56px;color:var(--amb);margin-bottom:.8rem}.sc2 h3{font-size:1.7rem;line-height:1}.sc2 p{margin-top:.4rem;color:var(--mut);font-size:.96rem}
+
+/* ubicación / contacto */
+.lg{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4rem);align-items:stretch;margin-top:2.6rem}
+.inf{display:grid;gap:1.5rem;align-content:start}
+.inf h3{font-family:'DM Sans',sans-serif;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amb2);margin-bottom:.3rem}
+.inf p{color:var(--mut)}.inf a{text-decoration:none;color:var(--ink);font-weight:600}.inf a:hover{color:var(--amb2)}
+.hr{display:flex;justify-content:space-between;gap:1rem;padding:.45rem .8rem;margin-inline:-.8rem;border-radius:4px}.hr.today{background:var(--card);box-shadow:inset 3px 0 0 var(--amb);color:var(--ink);font-weight:700}
+.hr span:last-child{color:var(--mut)}.hr.today span:last-child{color:var(--ink)}
+.mapw{position:relative;min-height:380px;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:#1a120d}
+.mapw iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.6) invert(.9) hue-rotate(180deg) contrast(.9)}
+.mapw .fb{position:absolute;left:1rem;bottom:1rem}
+
+footer{padding:2.5rem 0;border-top:1px solid var(--line);background:#0b0807;color:var(--mut);font-size:.9rem}
+.fr{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+.toast{position:fixed;left:50%;z-index:70;bottom:calc(1.5rem + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;pointer-events:none;max-width:calc(100% - 2rem);padding:.75rem 1.3rem;border-radius:4px;background:var(--card);border:1px solid var(--amb);font-size:.95rem;transition:opacity .35s,transform .35s cubic-bezier(.2,.9,.3,1.2)}.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@keyframes up{from{transform:translateY(105%)}to{transform:none}}
+@keyframes fade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(28px) scale(.95)}to{opacity:1;transform:none}}
+@keyframes smoke{0%{opacity:0;transform:translateY(0) scale(.6)}25%{opacity:.8}100%{opacity:0;transform:translate(var(--x),-150px) scale(2.2)}}
+@keyframes drip{0%,100%{opacity:.3;transform:scaleY(.5);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+@keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
+@media(max-width:1000px){.mg{grid-template-columns:1fr 1fr}.hg{grid-template-columns:1fr}.pic{max-width:520px;margin-inline:auto}.lg{grid-template-columns:1fr}.scroll{display:none}}
+@media(max-width:820px){.bg{display:block}
+.links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:rgba(15,11,9,.98);padding:0 1.5rem;max-height:0;overflow:hidden;visibility:hidden;transition:max-height .45s cubic-bezier(.2,.8,.2,1),padding .45s,visibility 0s .45s}
+.links.open{max-height:460px;padding:.5rem 1.5rem 1.4rem;visibility:visible;transition:max-height .45s cubic-bezier(.2,.8,.2,1),padding .45s}
+.links a:not(.btn){display:block;width:100%;padding:.9rem 0;border-bottom:1px solid var(--line)}.links .btn{margin-top:1rem}}
+@media(max-width:680px){.mg,.sv,.pg{grid-template-columns:1fr}.pg::before{display:none}.pg{gap:2.2rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}.smk{display:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="flame" viewBox="0 0 26 32"><path d="M13 1c1 7 9 10 9 19a9 9 0 0 1-18 0c0-4 2-6 4-8 0 3 1 5 3 5 0-5-1-9 2-16z" fill="#FF8A1F"/><path d="M13 16c1 3 5 5 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-8z" fill="#FFD08A"/></symbol>
+<symbol id="bur" viewBox="0 0 300 220">
+ <ellipse cx="150" cy="196" rx="118" ry="14" fill="rgba(0,0,0,.35)"/>
+ <path d="M52 168c0-6 4-10 12-10h172c8 0 12 4 12 10 0 14-22 24-60 24H112c-38 0-60-10-60-24z" fill="#C97A2A"/>
+ <path d="M58 150c20-4 30 10 50 4s34-10 52-2 30 6 46-2 24-6 36 0v14H58z" fill="#6FB43F"/>
+ <rect x="48" y="122" width="204" height="34" rx="17" fill="#4B2411"/>
+ <g stroke="#1a0d04" stroke-width="4" stroke-linecap="round" opacity=".6"><path d="M80 132l10 12M120 132l10 12M160 132l10 12M200 132l10 12"/></g>
+ <path d="M56 112c22 10 34-8 54-2s40 8 62 0 40-8 70 2l-6 14H62z" fill="#9A3B1E"/><path d="M56 112c22 10 34-8 54-2" fill="none" stroke="#C45A30" stroke-width="3"/>
+ <path d="M50 104h200c4 0 4 8 0 10l-20 4 4 18c1 5-6 5-7 0l-5-14-24 2 3 22c1 6-7 6-8 0l-4-22-36 1 2 16c1 6-7 6-8 0l-3-17-30 0-4 14c-1 5-8 5-7 0l3-16-26-2-7 16c-2 5-8 3-7-1l5-16-14-4c-4-2-4-10 0-10z" fill="#FFB23A"/>
+ <path d="M52 100c0-44 44-76 98-76s98 32 98 76z" fill="#E0963B"/>
+ <path d="M80 56c20-18 60-26 92-18" stroke="#F8C47A" stroke-width="7" stroke-linecap="round" fill="none" opacity=".55"/>
+ <g fill="#FBE6B8"><ellipse cx="118" cy="52" rx="7" ry="3.6" transform="rotate(-20 118 52)"/><ellipse cx="156" cy="42" rx="7" ry="3.6"/><ellipse cx="192" cy="54" rx="7" ry="3.6" transform="rotate(20 192 54)"/><ellipse cx="170" cy="72" rx="7" ry="3.6"/><ellipse cx="130" cy="76" rx="7" ry="3.6" transform="rotate(14 130 76)"/></g>
+</symbol></defs></svg>
+
+<header class="hd" id="hd">
+ <nav class="nav" aria-label="Principal">
+  <a class="logo bn" href="#inicio" aria-label="Humo y Fuego, inicio"><svg aria-hidden="true"><use href="#flame"/></svg>Humo y Fuego</a>
+  <button class="bg" id="bg" aria-expanded="false" aria-controls="links" aria-label="Abrir menú de navegación"><i></i><i></i><i></i></button>
+  <div class="links" id="links">
+   <a href="#inicio">INICIO</a><a href="#menu">MENÚ</a><a href="#nosotros">NOSOTROS</a><a href="#ubicacion">UBICACIÓN</a><a href="#contacto">CONTACTO</a>
+   <button type="button" class="btn sm" id="order">Pedir <span class="cn" id="cn" aria-label="productos en tu pedido">0</span></button>
+  </div>
+ </nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+ <div class="wrap hg">
+  <div>
+   <span class="eyebrow fd">Hamburguesas gourmet al carbón</span>
+   <h1 class="bn" aria-label="Pasión por el carbón"><span class="ln"><span>Pasión</span></span><span class="ln"><span>por el</span></span><span class="ln"><span><em>carbón</em></span></span></h1>
+   <p class="lede fd d1">Carne seleccionada, brasa de encino y tiempo. Cada hamburguesa pasa por el fuego antes de llegar a tu mesa, con ese humo que no se imita.</p>
+   <a class="btn fd d2" href="#menu">Explora nuestro menú →</a>
+  </div>
+  <div class="pic" role="img" aria-label="Hamburguesa con queso cheddar y tocino sobre una tabla de madera, con humo">
+   <div class="smk" id="smk"></div>
+   <svg viewBox="0 0 560 470">
+    <defs>
+     <linearGradient id="wd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5A3820"/><stop offset=".5" stop-color="#3E2515"/><stop offset="1" stop-color="#4C2F1A"/></linearGradient>
+     <radialGradient id="hg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FF8A1F" stop-opacity=".4"/><stop offset="1" stop-color="#FF8A1F" stop-opacity="0"/></radialGradient>
+    </defs>
+    <ellipse cx="280" cy="260" rx="270" ry="200" fill="url(#hg)"/>
+    <rect x="30" y="330" width="500" height="106" rx="26" fill="url(#wd)"/>
+    <rect x="30" y="330" width="500" height="22" rx="11" fill="#6B4527"/>
+    <g stroke="#2A170C" stroke-width="2" opacity=".55" fill="none"><path d="M60 372c80-8 160 8 250 0s150-6 200 0"/><path d="M50 398c100 8 180-8 280 0s130 8 180 0"/><path d="M70 420c90-4 170 6 260-2s120-2 160 2"/></g>
+    <circle cx="500" cy="383" r="9" fill="#1c0f07"/>
+    <use href="#bur" x="30" y="40" width="500" height="367"/>
+   </svg>
+  </div>
+ </div>
+ <div class="scroll" aria-hidden="true">SCROLL</div>
+</section>
+
+<section class="sec alt" id="menu">
+ <div class="wrap">
+  <div class="ct rv"><span class="eyebrow">Nuestro menú</span><h2 class="h2 bn">Las favoritas de la parrilla</h2><p class="sub">Carne de res de 180 g asada al carbón, pan brioche tostado y salsas hechas en casa. Toca AGREGAR y manda tu pedido por WhatsApp.</p></div>
+  <ul class="mg" id="mg"></ul>
+  <p class="mn">Precios en pesos mexicanos (MXN). Todas incluyen papas a la francesa.</p>
+ </div>
+</section>
+
+<section class="sec" id="nosotros">
+ <div class="wrap">
+  <div class="ct rv"><span class="eyebrow">Nosotros</span><h2 class="h2 bn">El secreto de nuestra brasa</h2><p class="sub">Nada de planchas ni atajos. Tres pasos que repetimos en cada servicio.</p></div>
+  <div class="pg">
+   <article class="st rv" style="--i:0"><div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#FFB347" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 34l8-14 10 4 8-10 6 12-6 12H14z"/><path d="M14 40l-4-6M24 40l-2-8M34 40l4-6"/><path d="M24 8c1 3 4 4 4 8a4 4 0 0 1-8 0c0-2 1-3 2-4 0 1 1 2 1 2 0-3-1-4 1-6z" fill="#FF8A1F" stroke="none"/></svg><span class="nm">1</span></div><h3 class="bn">Carbón de encino</h3><p>Lo encendemos desde temprano hasta lograr una brasa pareja que aporta humo y aroma.</p></article>
+   <article class="st rv" style="--i:1"><div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#FFB347" stroke-width="2.4" stroke-linecap="round"><path d="M6 20h36M6 28h36M6 36h36M10 14v28M20 14v28M30 14v28M40 14v28" opacity=".85"/><path d="M12 12c0-4 4-4 4-8M24 12c0-4 4-4 4-8M34 12c0-4 4-4 4-8"/></svg><span class="nm">2</span></div><h3 class="bn">Sellada a la parrilla</h3><p>La carne se sella a fuego fuerte para atrapar jugos y dejar esa costra dorada con marcas de parrilla.</p></article>
+   <article class="st rv" style="--i:2"><div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#FFB347" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20c0-8 7-13 16-13s16 5 16 13z"/><path d="M8 26h32M10 32c3 3 6-3 10 0s7-3 10 0 7-3 8 0"/><path d="M10 38c0-2 2-3 4-3h20c2 0 4 1 4 3 0 3-4 5-9 5H19c-5 0-9-2-9-5z"/></svg><span class="nm">3</span></div><h3 class="bn">Armada al momento</h3><p>Queso fundido, tocino crujiente y verduras frescas sobre pan tostado. Directo a tu mesa.</p></article>
+  </div>
+  <div class="wb rv"><div><b>180 g</b><span>de carne de res</span></div><div><b>100%</b><span>carbón de encino</span></div><div><b>0</b><span>planchas ni atajos</span></div><div><b>Cada día</b><span>pan y salsas frescos</span></div></div>
+ </div>
+</section>
+
+<section class="sec alt" id="servicio">
+ <div class="wrap">
+  <div class="ct rv"><span class="eyebrow">Cómo pedir</span><h2 class="h2 bn">Tú eliges cómo disfrutarla</h2></div>
+  <div class="sv">
+   <article class="sc2 rv"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="34" r="6"/><circle cx="37" cy="34" r="6"/><path d="M11 34l8-14h10l4 14M24 20l-3-6h-5M29 20h6"/></svg><h3 class="bn">A domicilio</h3><p>Pídelo por WhatsApp y te lo llevamos caliente. Consulta las zonas de entrega.</p></article>
+   <article class="sc2 rv"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 16h30l-2 26H11z"/><path d="M17 16v-3a7 7 0 0 1 14 0v3"/></svg><h3 class="bn">Para recoger</h3><p>Haz tu pedido, pasa por él y evita la espera. Listo en unos 20 minutos.</p></article>
+   <article class="sc2 rv"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20h36M10 20l-2 20M38 20l2 20M16 20v10M32 20v10"/><path d="M14 14h20M18 8h12"/></svg><h3 class="bn">En el local</h3><p>Ambiente cálido, mesas de madera y la parrilla a la vista.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="sec" id="ubicacion">
+ <div class="wrap">
+  <div class="ct rv"><span class="eyebrow">Ubicación</span><h2 class="h2 bn">Ven a encontrar el humo</h2></div>
+  <div class="lg">
+   <div class="inf rv" id="contacto">
+    <div><h3>Dirección</h3><p data-addr></p></div>
+    <div><h3>Horarios</h3>
+     <div class="hrs">
+      <div class="hr" data-d="1,2,3,4"><span>Lunes a jueves</span><span>1:00 pm – 10:00 pm</span></div>
+      <div class="hr" data-d="5,6"><span>Viernes y sábado</span><span>1:00 pm – 12:00 am</span></div>
+      <div class="hr" data-d="0"><span>Domingo</span><span>1:00 pm – 9:00 pm</span></div>
+     </div></div>
+    <div><h3>Contacto</h3><p><a href="#" data-wa target="_blank" rel="noopener" data-wad></a><br><a href="mailto:hola@humoyfuego.mx">hola@humoyfuego.mx</a></p></div>
+    <div><a class="btn" href="#" id="dir" target="_blank" rel="noopener">Cómo llegar</a></div>
+   </div>
+   <div class="mapw rv"><iframe id="map" title="Mapa de ubicación de Humo y Fuego" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><a class="btn sm fb" id="dir2" href="#" target="_blank" rel="noopener">Abrir en Google Maps</a></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer><div class="wrap fr"><span class="bn" style="font-size:1.5rem;color:var(--ink)">Humo y Fuego</span><span>© <span id="yr"></span> Humo y Fuego. Todos los derechos reservados.</span></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){'use strict';
+/* ===== CONFIGURACIÓN: cambia estos datos por los del negocio ===== */
+var C={name:'Humo y Fuego',wa:'5210000000000',wad:'+52 1 000 000 0000',addr:'Av. del Carbón 128, Col. Centro'};
+var MENU=[
+ {id:'m1',n:'La Brasa Suprema',p:189,d:'Doble carne al carbón, cheddar fundido, tocino crujiente, cebolla caramelizada y salsa de la casa.',t:'La favorita'},
+ {id:'m2',n:'Humo BBQ',p:169,d:'Carne ahumada, aros de cebolla, tocino, queso y salsa BBQ de chipotle.'},
+ {id:'m3',n:'Fuego Picante',p:175,d:'Pepper jack, jalapeño asado, salsa habanero y cebolla morada encurtida.',t:'Picante'},
+ {id:'m4',n:'Veggie Ahumada',p:159,d:'Hongo portobello y berenjena a la parrilla, queso provolone y pesto de albahaca.',t:'Vegetariana'}];
+var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var money=function(n){return'$'+n.toLocaleString('es-MX')};
+var wl=function(t){return'https://wa.me/'+C.wa+(t?'?text='+encodeURIComponent(t):'')};
+
+$$('[data-addr]').forEach(function(e){e.textContent=C.addr});
+$$('[data-wad]').forEach(function(e){e.textContent=C.wad});
+$$('[data-wa]').forEach(function(e){e.href=wl('Hola '+C.name+', quisiera más información.')});
+var q=encodeURIComponent(C.name+' '+C.addr);
+$('#map').src='https://www.google.com/maps?q='+q+'&output=embed';
+$('#dir').href=$('#dir2').href='https://www.google.com/maps/search/?api=1&query='+q;
+$('#yr').textContent=new Date().getFullYear();
+
+var te=$('#toast'),tt;function toast(m){te.textContent=m;te.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){te.classList.remove('on')},2200)}
+var hd=$('#hd');function sc(){hd.classList.toggle('sc',window.scrollY>24)}window.addEventListener('scroll',sc,{passive:true});sc();
+var bg=$('#bg'),lk=$('#links');
+bg.addEventListener('click',function(){var o=lk.classList.toggle('open');bg.setAttribute('aria-expanded',String(o));bg.setAttribute('aria-label',o?'Cerrar menú de navegación':'Abrir menú de navegación')});
+$$('a',lk).forEach(function(a){a.addEventListener('click',function(){lk.classList.remove('open');bg.setAttribute('aria-expanded','false')})});
+
+/* humo */
+var sm=$('#smk');for(var i=0;i<7;i++){var s=document.createElement('i');s.style.cssText='--l:'+(8+i*13)+'%;--t:'+(4.5+Math.random()*3).toFixed(1)+'s;--d:'+(-i*.9).toFixed(1)+'s;--x:'+Math.round(Math.random()*70-35)+'px';sm.appendChild(s)}
+
+/* menú */
+var order={},cn=$('#cn'),mg=$('#mg');
+var tpl='<div class="mp"><svg viewBox="0 0 300 220" aria-hidden="true"><use href="#bur"/></svg></div>';
+MENU.forEach(function(it,ix){
+ var li=document.createElement('li');li.className='mc rv';li.style.transitionDelay=(ix*90)+'ms';
+ li.innerHTML=tpl+'<div class="mb"><h3 class="bn"></h3><p></p><div class="mf"><span class="pr"></span><button type="button" class="ab">AGREGAR</button></div></div>';
+ var mp=$('.mp',li);
+ if(it.t){var tg=document.createElement('span');tg.className='tg';tg.textContent=it.t;mp.appendChild(tg)}
+ mp.querySelector('svg').style.filter='hue-rotate('+[0,-12,-28,60][ix]+'deg) saturate('+[1,1,1.25,.9][ix]+')';
+ $('h3',li).textContent=it.n;$('p',li).textContent=it.d;
+ $('.pr',li).innerHTML=money(it.p)+'<small>MXN</small>';
+ var b=$('.ab',li);b.setAttribute('aria-label','Agregar '+it.n+' al pedido');
+ b.addEventListener('click',function(){order[it.id]=(order[it.id]||0)+1;upd();toast(it.n+' agregada a tu pedido');
+  b.classList.remove('ok');void b.offsetWidth;b.classList.add('ok');b.textContent='AGREGADA ✓';setTimeout(function(){b.classList.remove('ok');b.textContent='AGREGAR'},1000)});
+ mg.appendChild(li)});
+function total(){return MENU.reduce(function(s,i){return s+(order[i.id]||0)*i.p},0)}
+function upd(){var n=Object.keys(order).reduce(function(s,k){return s+order[k]},0);cn.textContent=n;if(n){cn.classList.remove('on');void cn.offsetWidth;cn.classList.add('on')}else cn.classList.remove('on')}
+$('#order').addEventListener('click',function(){
+ if(!total()){toast('Agrega una hamburguesa del menú para armar tu pedido');$('#menu').scrollIntoView({behavior:'smooth'});return}
+ var L=['Hola '+C.name+' 🔥','Quiero hacer un pedido:',''];
+ MENU.forEach(function(i){if(order[i.id])L.push('• '+order[i.id]+' × '+i.n+' ('+money(order[i.id]*i.p)+')')});
+ L.push('','Total aproximado: '+money(total())+' MXN','','¿Para recoger o a domicilio? Mi nombre es:');
+ window.open(wl(L.join('\n')),'_blank','noopener');toast('Abriendo WhatsApp con tu pedido…')});
+
+/* horario del día */
+var d=new Date().getDay();$$('.hr').forEach(function(r){r.classList.toggle('today',r.getAttribute('data-d').split(',').indexOf(String(d))>-1)});
+
+/* aparición al hacer scroll */
+var rv=$$('.rv');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});rv.forEach(function(x){io.observe(x)})}
+else rv.forEach(function(x){x.classList.add('in')});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mis XV · 5 diseños</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Jost:wght@300;400;500&family=Playfair+Display:ital,wght@0,500;1,400&family=Marcellus&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 17px/1.6 Jost,system-ui,sans-serif;transition:background .6s,color .6s;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body[data-t="1"]{--bg:#0d0d10;--ink:#f4ecd8;--soft:#b8a97f;--acc:#d4af37;--acc2:#f5e2a0;--panel:#17171c;--line:#4a3f1d;--disp:Cinzel,serif;--rad:0;--rc:0;--sh:inset 0 0 0 5px #17171c,inset 0 0 0 6px #d4af37;--gl:"◆ ◇ ◆"}
+
+.tb{position:fixed;z-index:30;left:0;right:0;top:env(safe-area-inset-top,0px);display:flex;gap:.4rem;justify-content:center;padding:.5rem;overflow-x:auto}
+.tb button{flex:none;min-height:44px;padding:0 .85rem;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--ink);font:400 .85rem Jost,sans-serif;cursor:pointer;transition:background .3s,color .3s}
+.tb button[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:var(--bg)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+
+.pt{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.p{position:absolute;top:var(--t);width:var(--s);height:var(--s);will-change:translate,opacity}
+body[data-t="1"] .p{background:var(--acc2);rotate:45deg;animation:tw var(--d) ease-in-out var(--dl) infinite}
+@keyframes tw{0%,100%{opacity:.1;scale:.5}50%{opacity:1;scale:1.2}}
+@keyframes dr{50%{translate:var(--x) var(--y)}}
+@keyframes fl{from{translate:0 105vh}to{translate:var(--x) -20vh}}
+@keyframes fp{from{transform:scaleX(1)}to{transform:scaleX(.3)}}
+@keyframes fa{from{translate:0 -10vh;rotate:0deg}to{translate:var(--x) 105vh;rotate:var(--r)}}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes shine{to{background-position:-200% 0}}
+
+main{position:relative;z-index:2;max-width:32rem;margin:0 auto}
+.cv{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;padding:3rem 1.6rem 3.2rem}
+.cv::before{content:"";position:absolute;inset:0 -100vw;z-index:-1;background:var(--cvbg)}
+body[data-t="1"]{--cvbg:radial-gradient(circle at 50% 35%,rgba(212,175,55,.28),transparent 55%),repeating-linear-gradient(60deg,transparent 0 38px,rgba(212,175,55,.08) 38px 39px),repeating-linear-gradient(-60deg,transparent 0 38px,rgba(212,175,55,.08) 38px 39px)}
+body[data-t="1"] .cv::after,body[data-t="5"] .cv::after{content:"";position:absolute;inset:1rem;border:1px solid var(--acc2);outline:1px solid var(--acc2);outline-offset:5px;pointer-events:none}
+.cv>*{margin:0}
+.cv.a>*{animation:up 1s both}
+.cv.a>:nth-child(2){animation-delay:.2s}.cv.a>:nth-child(3){animation-delay:.4s}.cv.a>:nth-child(4){animation-delay:.6s}
+.mis{font:italic 300 2.4rem/1 "Cormorant Garamond",serif}
+.xv{font:300 clamp(8rem,46vw,13rem)/.85 var(--disp);letter-spacing:-.02em;color:var(--acc)}
+.nm{font:400 clamp(1.9rem,9vw,2.8rem)/1.1 var(--disp);letter-spacing:.14em;text-transform:uppercase;margin-top:.6rem!important}
+.dt{letter-spacing:.08em;margin-top:.5rem!important}
+body[data-t="1"] .cv.a>.xv{font-weight:400;background:linear-gradient(100deg,#8a6d1a,#f5e2a0 30%,#d4af37 50%,#f5e2a0 70%,#8a6d1a) 0 0/200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:up 1s .2s both,shine 5s linear infinite}
+
+section{padding:3.2rem 1.6rem 0;text-align:center}
+h2{font:400 2rem/1.1 var(--disp);margin:0 0 1rem}
+.dv::before{content:var(--gl);display:block;color:var(--acc);letter-spacing:.5em;margin-bottom:1.2rem}
+.fr{font:italic 400 1.5rem/1.45 var(--disp);margin:0}
+[data-r]{opacity:0;transform:translateY(16px);transition:opacity .8s,transform .8s}
+[data-r].in{opacity:1;transform:none}
+.cn{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+.cn div{background:var(--panel);border:1px solid var(--line);border-radius:var(--rc);padding:.8rem 0}
+.cn b{display:block;font:400 2.2rem/1 var(--disp);font-variant-numeric:tabular-nums}
+.cn span{font-size:.8rem;color:var(--soft)}
+.cd{background:var(--panel);border:1px solid var(--line);border-radius:var(--rad);box-shadow:var(--sh);padding:1.7rem 1.4rem;margin-bottom:1.1rem}
+.cd h3{font:400 1.6rem/1.2 var(--disp);margin:0 0 .2rem}
+.cd p{margin:.15rem 0}.cd .h{color:var(--acc);font-weight:500}.cd .s{color:var(--soft);font-size:.95rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 1.6rem;margin-top:.8rem;border:0;border-radius:999px;background:var(--acc);color:var(--bg);font:500 .95rem Jost,sans-serif;letter-spacing:.06em;text-decoration:none;cursor:pointer;transition:transform .15s,filter .2s}
+body[data-t="1"] .btn,body[data-t="5"] .btn{border-radius:0}
+.btn:hover{filter:brightness(1.1)}.btn:active{transform:scale(.96)}
+.rs{text-align:left}
+.rs label,.rs legend{display:block;font:italic 400 1.1rem var(--disp);color:var(--soft);padding:0;margin:0 0 .2rem}
+.rs input[type=text]{width:100%;min-height:48px;padding:.5rem .1rem;font:400 1.1rem Jost,sans-serif;color:var(--ink);background:transparent;border:0;border-bottom:1.5px solid var(--line);border-radius:0;margin-bottom:1.2rem}
+.rs input[type=text]:focus{outline:none;border-color:var(--acc)}
+.rs fieldset{border:0;padding:0;margin:0 0 1.2rem}
+.ro{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem}
+.o{min-height:48px;padding:0 1.1rem;border:1.5px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:400 1rem Jost,sans-serif;cursor:pointer;transition:background .25s,color .25s,transform .15s}
+.o.n{width:48px;padding:0;font:400 1.3rem var(--disp)}
+.o:active{transform:scale(.94)}
+.o[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:var(--bg)}
+.er{min-height:1.4em;margin:0 0 .4rem;color:#c0392b;font-weight:400}
+body[data-t="1"] .er,body[data-t="2"] .er{color:#ff9c9c}
+.ok{text-align:center}.ok h3{font-size:2rem}
+footer{padding:3rem 1.6rem 3.5rem;text-align:center;font:italic 400 1.4rem var(--disp);color:var(--soft)}
+@media(prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}[data-r],.cv>*{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body data-t="1">
+<div class="pt" id="pt" aria-hidden="true"></div>
+<main>
+  <header class="cv a" id="cv">
+    <p class="mis">Mis</p><p class="xv" aria-label="quince años">XV</p><p class="nm" id="nm"></p><p class="dt" id="dt"></p>
+  </header>
+  <section><div class="dv" aria-hidden="true"></div><p class="fr" id="fr" data-r></p></section>
+  <section><h2 data-r>Faltan</h2>
+    <div class="cn" data-r role="timer"><div><b id="cd">0</b><span>días</span></div><div><b id="ch">0</b><span>horas</span></div><div><b id="cm">0</b><span>min</span></div><div><b id="cs">0</b><span>seg</span></div></div>
+  </section>
+  <section><h2 data-r>Dónde y cuándo</h2><div id="lg"></div></section>
+  <section><div class="dv" aria-hidden="true"></div><h2 data-r>Vestimenta</h2><p id="vs" data-r></p></section>
+  <section><h2 data-r>¿Nos acompañas?</h2>
+    <div class="cd rs" data-r>
+      <form id="f" novalidate>
+        <label for="n">Tu nombre</label>
+        <input type="text" id="n" autocomplete="name" placeholder="Nombre y apellido">
+        <input type="text" id="w" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;width:1px;height:1px;min-height:0">
+        <fieldset><legend>¿Podrás venir?</legend><div class="ro" id="ch2">
+          <button type="button" class="o" data-a="si" aria-pressed="true">Sí, ahí estaré</button>
+          <button type="button" class="o" data-a="no" aria-pressed="false">No podré ir</button></div></fieldset>
+        <fieldset id="pb"><legend>Personas, contándote a ti</legend><div class="ro" id="pd"></div></fieldset>
+        <p class="er" id="er" role="alert"></p>
+        <button type="submit" class="btn" style="width:100%;margin:0">Enviar respuesta</button>
+      </form>
+      <div class="ok" id="ok" hidden><h3>¡Gracias!</h3><p id="okm"></p></div>
+    </div>
+    <p class="s" id="demo" style="font-size:.85rem;color:var(--soft)">Ejemplo: la respuesta no se envía a ningún lado.</p>
+  </section>
+  <footer id="ft"></footer>
+</main>
+<script>
+var CONFIG={
+  nombre:"Valentina",
+  fecha:new Date(2026,10,28,17,0,0),
+  fechaTexto:"28 de noviembre de 2026",
+  frase:"Quince años de sueños, risas y aprendizajes. Quiero que me acompañes a celebrarlos.",
+  lugares:[["Misa de acción de gracias","Parroquia San José","Calle Hidalgo 120, Centro","5:00 p. m."],["Recepción","Jardín Las Flores","Carretera a Tlaquepaque 450","7:00 p. m."]],
+  vestimenta:"Formal. Te pedimos evitar el blanco, que es el color de la quinceañera.",
+  pasesMax:4,
+  tema:1,        // diseño fijo de este archivo
+  evento:"valentina",
+  sheetsUrl:""   // URL de Apps Script (termina en /exec)
+};
+(function(){
+var $=function(i){return document.getElementById(i)},B=document.body,rnd=Math.random,
+red=matchMedia("(prefers-reduced-motion: reduce)").matches;
+$("nm").textContent=CONFIG.nombre;$("dt").textContent=CONFIG.fechaTexto;$("fr").textContent=CONFIG.frase;
+$("vs").textContent=CONFIG.vestimenta;$("ft").textContent="Te espero, "+CONFIG.nombre;
+document.title="Mis XV · "+CONFIG.nombre;
+if(CONFIG.sheetsUrl)$("demo").hidden=true;
+
+CONFIG.lugares.forEach(function(l){
+  var d=document.createElement("div");d.className="cd";d.setAttribute("data-r","");
+  d.innerHTML="<h3></h3><p class='h'></p><p></p><p class='s'></p>";
+  d.children[0].textContent=l[0];d.children[1].textContent=l[3];d.children[2].textContent=l[1];d.children[3].textContent=l[2];
+  var a=document.createElement("a");a.className="btn";a.target="_blank";a.rel="noopener";a.textContent="Ver en mapa";
+  a.href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(l[1]+" "+l[2]);
+  d.appendChild(a);$("lg").appendChild(d);
+});
+
+function tick(){var s=Math.floor(Math.max(0,CONFIG.fecha-Date.now())/1000);
+  $("cd").textContent=Math.floor(s/86400);$("ch").textContent=Math.floor(s%86400/3600);
+  $("cm").textContent=Math.floor(s%3600/60);$("cs").textContent=s%60}
+tick();setInterval(tick,1000);
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll("[data-r]").forEach(function(x){io.observe(x)});
+
+/* Partículas distintas por diseño */
+function parts(t){var w=$("pt");w.innerHTML="";if(red)return;
+  var n=[28,24,9,22,14][t-1];
+  for(var i=0;i<n;i++){var p=document.createElement("span"),s=p.style;p.className="p";
+    s.left=rnd()*100+"%";
+    s.setProperty("--t",(t==3||t==4||t==5)?"0":rnd()*100+"%");
+    s.setProperty("--x",(rnd()*160-80)+"px");s.setProperty("--y",(rnd()*120-60)+"px");s.setProperty("--r",(rnd()*720-360)+"deg");
+    s.setProperty("--d",[3+rnd()*4,6+rnd()*6,12+rnd()*8,10+rnd()*8,8+rnd()*6][t-1]+"s");
+    s.setProperty("--dl",(-rnd()*10)+"s");
+    s.setProperty("--s",[5+rnd()*5,4+rnd()*5,22+rnd()*14,8+rnd()*10,8+rnd()*8][t-1]+"px");
+    w.appendChild(p)}}
+
+function tema(t){B.dataset.t=t;
+  document.querySelectorAll(".tb button").forEach(function(b){b.setAttribute("aria-pressed",String(+b.dataset.t===t))});
+  parts(t);var c=$("cv");c.classList.remove("a");void c.offsetWidth;c.classList.add("a");scrollTo(0,0)}
+document.querySelectorAll(".tb button").forEach(function(b){b.addEventListener("click",function(){tema(+b.dataset.t)})});
+tema(CONFIG.tema);
+
+/* Reservación */
+var as="si",pa=1;
+for(var i=1;i<=CONFIG.pasesMax;i++){var b=document.createElement("button");b.type="button";b.className="o n";b.textContent=i;
+  b.setAttribute("aria-pressed",i===1?"true":"false");
+  b.onclick=function(){pa=+this.textContent;document.querySelectorAll("#pd .o").forEach(function(x){x.setAttribute("aria-pressed",String(x===this))},this)};
+  $("pd").appendChild(b)}
+document.querySelectorAll("#ch2 .o").forEach(function(b){b.onclick=function(){as=b.dataset.a;
+  document.querySelectorAll("#ch2 .o").forEach(function(x){x.setAttribute("aria-pressed",String(x===b))});
+  $("pb").hidden=as!=="si"}});
+$("f").onsubmit=function(e){e.preventDefault();
+  var n=$("n").value.trim();if(!n){$("er").textContent="Escribe tu nombre.";$("n").focus();return}
+  $("er").textContent="";var k=as==="si"?pa:0;
+  function ok(){$("f").hidden=true;$("ok").hidden=false;
+    $("okm").textContent=as==="si"?n+", te esperamos con "+k+(k===1?" lugar":" lugares")+" reservados.":n+", gracias por avisarnos."}
+  if(!CONFIG.sheetsUrl)return ok();
+  var body=JSON.stringify({evento:CONFIG.evento,nombre:n,asiste:as,personas:k,web:$("w").value}),h={"Content-Type":"text/plain;charset=utf-8"};
+  fetch(CONFIG.sheetsUrl,{method:"POST",headers:h,body:body}).then(function(r){return r.json()})
+    .then(function(j){j.ok?ok():$("er").textContent="No se pudo guardar. Intenta otra vez."})
+    .catch(function(){fetch(CONFIG.sheetsUrl,{method:"POST",mode:"no-cors",headers:h,body:body}).then(ok).catch(function(){$("er").textContent="Sin conexión. Intenta otra vez."})})};
+})();
+</script>
+</body>
+</html>

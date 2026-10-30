@@ -1,0 +1,8 @@
+Proyectos de «Diseño» (Herramientas para creadores).
+
+Crea aquí UNA CARPETA por proyecto, por ejemplo:  demos/creadores/diseno-c/mi-proyecto/
+  - Si es una página o invitación: que tenga su index.html.
+  - Si es software: pon dentro su video, portada y capturas.
+Luego regístralo en data/demos.json con:
+  "cat": "creadores",  "sub": "diseno-c",  "id": "mi-proyecto"   (el id = nombre de la carpeta)
+La ruta se calcula sola: demos/creadores/diseno-c/<id>/index.html

@@ -1,0 +1,8 @@
+Proyectos de «Eventos y experiencias» (Desarrollo web).
+
+Crea aquí UNA CARPETA por proyecto, por ejemplo:  demos/desarrollo-web/eventos/mi-proyecto/
+  - Si es una página o invitación: que tenga su index.html.
+  - Si es software: pon dentro su video, portada y capturas.
+Luego regístralo en data/demos.json con:
+  "cat": "desarrollo-web",  "sub": "eventos",  "id": "mi-proyecto"   (el id = nombre de la carpeta)
+La ruta se calcula sola: demos/desarrollo-web/eventos/<id>/index.html

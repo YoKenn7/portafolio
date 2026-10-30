@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>InmoCasa · Catálogo de inmuebles</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap">
+<style>
+:root{--bg:#fff;--surface:#f4f6f8;--line:#dde2e8;--ink:#1c2733;--slate:#5b6b7b;--navy:#14284b;--navy-h:#1d3a6b;--on-navy:#fff;--ok:#1f7a4d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f161f;--surface:#18222e;--line:#2b3846;--ink:#e8edf2;--slate:#9aabbb;--navy:#5b8cd6;--navy-h:#78a2e6;--on-navy:#0b1422;--ok:#5fcf9a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f161f;--surface:#18222e;--line:#2b3846;--ink:#e8edf2;--slate:#9aabbb;--navy:#5b8cd6;--navy-h:#78a2e6;--on-navy:#0b1422;--ok:#5fcf9a;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 "Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:600 24px "Newsreader",Georgia,serif;color:var(--navy);display:flex;align-items:center;gap:8px;letter-spacing:-.01em}
+nav{display:flex;gap:22px;color:var(--slate);font-weight:500}
+nav a{color:inherit;text-decoration:none}nav a:hover{color:var(--ink)}
+.btn{background:var(--navy);color:var(--on-navy);border:0;border-radius:6px;padding:11px 20px;font:600 15px inherit;font-family:inherit;cursor:pointer}
+.btn:hover{background:var(--navy-h)}
+:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+.hero{padding:44px 0 28px}
+h1{font:500 clamp(30px,4.4vw,46px)/1.08 "Newsreader",Georgia,serif;margin:0 0 8px;letter-spacing:-.02em;max-width:18ch}
+.hero p{color:var(--slate);margin:0 0 24px;max-width:52ch}
+.filters{display:grid;grid-template-columns:repeat(4,1fr) auto;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;align-items:end}
+.filters label{display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--slate);font-weight:500}
+select{height:42px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);padding:0 10px;font:inherit}
+.bar{display:flex;justify-content:space-between;align-items:baseline;margin:30px 0 14px}
+.bar h2{font:500 24px "Newsreader",Georgia,serif;margin:0}
+.bar span{color:var(--slate)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:8px;overflow:hidden;cursor:pointer;text-align:left;padding:0;font:inherit;color:inherit;display:block;width:100%}
+.card:hover{border-color:var(--slate)}
+.card[aria-pressed="true"]{border-color:var(--navy);box-shadow:0 0 0 2px var(--navy)}
+.card svg,.slide svg{display:block;width:100%;height:auto}
+.card .in{padding:14px 16px 16px}
+.price{font:600 22px "Newsreader",Georgia,serif;color:var(--navy)}
+.card h3{margin:2px 0 2px;font-size:16px;font-weight:600}
+.loc{color:var(--slate);font-size:14px}
+.meta{display:flex;gap:14px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);color:var(--slate);font-size:14px}
+.empty{grid-column:1/-1;padding:40px;text-align:center;background:var(--surface);border-radius:8px;color:var(--slate)}
+.detail{display:grid;grid-template-columns:1.35fr 1fr;gap:28px;margin:44px 0 60px;align-items:start}
+.spec{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.slider{position:relative;background:var(--surface)}
+.slide{display:none}.slide.on{display:block}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:0;background:var(--bg);color:var(--ink);font-size:20px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.arrow.l{left:12px}.arrow.r{right:12px}
+.dots{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:7px}
+.dots button{width:9px;height:9px;border-radius:50%;border:0;background:rgba(255,255,255,.65);padding:0;cursor:pointer}
+.dots button.on{background:var(--navy)}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:8px}
+.thumbs button{border:2px solid transparent;border-radius:5px;padding:0;overflow:hidden;cursor:pointer;background:none}
+.thumbs button.on{border-color:var(--navy)}
+.sbody{padding:22px 24px 26px}
+.sbody h2{font:500 28px/1.15 "Newsreader",Georgia,serif;margin:0 0 4px}
+.sbody .price{font-size:30px;display:block;margin:10px 0 16px}
+dl{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:0 0 18px}
+dl div{background:var(--bg);padding:12px}
+dt{color:var(--slate);font-size:13px}dd{margin:2px 0 0;font-weight:600;font-size:17px}
+.feat{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.feat li{background:var(--surface);border-radius:999px;padding:5px 12px;font-size:14px;color:var(--slate)}
+.sbody p{color:var(--slate);margin:0;max-width:62ch}
+form{position:sticky;top:16px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px}
+form h2{font:500 24px "Newsreader",Georgia,serif;margin:0 0 4px}
+form>p{margin:0 0 16px;color:var(--slate);font-size:14px}
+.f{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;font-size:13px;color:var(--slate);font-weight:500}
+input,textarea{border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);padding:10px;font:inherit}
+textarea{min-height:96px;resize:vertical}
+form .btn{width:100%;padding:13px}
+.ok{display:none;margin-top:14px;color:var(--ok);font-weight:600}
+.sec{padding:64px 0 0}.sec h2.t{font:500 clamp(26px,3.4vw,36px)/1.12 "Newsreader",Georgia,serif;margin:0 0 10px;letter-spacing:-.015em;max-width:24ch}.sec>p.lead{color:var(--slate);max-width:60ch;margin:0 0 28px;font-size:16px}
+.mv{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}.mv div{border-top:3px solid var(--navy);padding-top:14px}.mv h3{font:500 22px "Newsreader",Georgia,serif;margin:0 0 6px}.mv p{margin:0;color:var(--slate)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:36px;background:var(--surface);border:1px solid var(--line);border-radius:10px}.stats div{padding:22px 20px;border-left:1px solid var(--line)}.stats div:first-child{border-left:0}.stats b{display:block;font:500 34px "Newsreader",Georgia,serif;color:var(--navy)}.stats span{color:var(--slate);font-size:14px}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}.svc div{background:var(--bg);padding:22px}.svc h3{margin:0 0 6px;font-size:17px}.svc p{margin:0;color:var(--slate);font-size:14.5px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;list-style:none;padding:0;margin:0;counter-reset:s}.steps li{counter-increment:s;border-left:2px solid var(--line);padding:0 0 0 16px}.steps li::before{content:counter(s);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--navy);color:var(--on-navy);font-weight:600;font-size:14px;margin-bottom:10px}.steps b{display:block;margin-bottom:4px}.steps span{color:var(--slate);font-size:14.5px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.quotes figure{margin:0;background:var(--surface);border-radius:10px;padding:22px}.quotes blockquote{margin:0 0 14px;font:500 18px/1.4 "Newsreader",Georgia,serif}.quotes figcaption{color:var(--slate);font-size:14px}
+.faq{max-width:780px}.faq details{border-bottom:1px solid var(--line);padding:16px 0}.faq summary{cursor:pointer;font-weight:600;font-size:16px}.faq details p{margin:10px 0 0;color:var(--slate)}
+.cta{margin-top:64px;background:var(--navy);color:var(--on-navy);border-radius:12px;padding:38px 36px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.cta h2{font:500 28px "Newsreader",Georgia,serif;margin:0 0 4px}.cta p{margin:0;opacity:.85}.cta .btn{background:var(--bg);color:var(--navy)}.cta .btn:hover{background:var(--surface)}
+footer{margin-top:64px}.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:28px;padding-bottom:22px}.fgrid h4{margin:0 0 8px;color:var(--ink);font-size:15px}.fgrid a{display:block;color:var(--slate);text-decoration:none;margin-bottom:4px}.fgrid a:hover{color:var(--ink)}.fgrid p{margin:0}
+@media (max-width:900px){.mv,.svc,.quotes{grid-template-columns:1fr}.steps,.stats{grid-template-columns:1fr 1fr}.stats div:nth-child(3){border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--line)}.fgrid{grid-template-columns:1fr 1fr}}
+footer{border-top:1px solid var(--line);color:var(--slate);padding:22px 0;font-size:14px}
+@media (max-width:900px){.filters{grid-template-columns:1fr 1fr}.filters .btn{grid-column:1/-1}.detail{grid-template-columns:1fr}form{position:static}nav{display:none}dl{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="logo"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M3 12 13 3l10 9v11H3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><rect x="10" y="14" width="6" height="9" fill="currentColor"/></svg>InmoCasa</div>
+<nav><a href="#catalogo">Inmuebles</a><a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a><a href="#preguntas">Preguntas</a><a href="#contacto">Contacto</a></nav>
+<button class="btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Hablar con un asesor</button>
+</div></header>
+
+<main class="wrap">
+<section class="hero">
+<h1>Encuentra la casa donde quieres vivir</h1>
+<p>Compara inmuebles por precio, zona y tamaño, revisa todas sus fotos y pide informes en un solo lugar.</p>
+<div class="filters" role="search">
+<label>Tipo de inmueble<select id="fType"><option value="">Todos</option><option>Casa</option><option>Departamento</option><option>Terreno</option></select></label>
+<label>Precio máximo<select id="fPrice"><option value="">Sin límite</option><option value="2000000">$2,000,000</option><option value="4000000">$4,000,000</option><option value="7000000">$7,000,000</option></select></label>
+<label>Ubicación<select id="fCity"><option value="">Todas las zonas</option></select></label>
+<label>Recámaras<select id="fBeds"><option value="0">Cualquiera</option><option value="1">1 o más</option><option value="2">2 o más</option><option value="3">3 o más</option><option value="4">4 o más</option></select></label>
+<button class="btn" id="go">Buscar inmuebles</button>
+</div>
+</section>
+
+<section id="catalogo">
+<div class="bar"><h2>Inmuebles disponibles</h2><span id="count" aria-live="polite"></span></div>
+<div class="grid" id="grid"></div>
+</section>
+
+<section class="detail" id="ficha">
+<article class="spec" aria-live="polite">
+<div class="slider" id="slider"></div>
+<div class="thumbs" id="thumbs"></div>
+<div class="sbody" id="sbody"></div>
+</article>
+<form id="contacto" onsubmit="return send(event)">
+<h2>Solicitar información</h2>
+<p id="formFor">Un asesor te responde en menos de un día hábil.</p>
+<label class="f">Nombre completo<input required name="n" autocomplete="name"></label>
+<label class="f">Correo electrónico<input required type="email" name="e" autocomplete="email"></label>
+<label class="f">Teléfono<input type="tel" name="t" autocomplete="tel"></label>
+<label class="f">Mensaje<textarea name="m" id="msg">Me interesa recibir más información y agendar una visita.</textarea></label>
+<button class="btn" type="submit">Solicitar información</button>
+<div class="ok" id="ok" role="status">Listo, recibimos tu solicitud. Te contactaremos pronto.</div>
+</form>
+</section>
+<section class="sec" id="nosotros">
+<h2 class="t">Una inmobiliaria que te explica cada paso</h2>
+<p class="lead">InmoCasa nació para que comprar, vender o rentar un inmueble deje de ser un trámite confuso. Te mostramos precios reales, revisamos la documentación contigo y te acompañamos hasta la entrega de llaves.</p>
+<div class="mv">
+<div><h3>Misión</h3><p>Ayudar a las familias y a los inversionistas a tomar decisiones inmobiliarias seguras, con información clara, asesoría honesta y un proceso sin sorpresas.</p></div>
+<div><h3>Visión</h3><p>Ser la inmobiliaria que más personas recomienden en el país por su transparencia, su trato cercano y la calidad de los inmuebles que ofrece.</p></div>
+<div><h3>Valores</h3><p>Honestidad en los precios, respeto por el tiempo de cada cliente, compromiso hasta el cierre y responsabilidad con cada familia que confía en nosotros.</p></div>
+</div>
+<div class="stats"><div><b>12 años</b><span>en el mercado inmobiliario</span></div><div><b>1,800</b><span>familias con casa nueva</span></div><div><b>96%</b><span>de clientes que nos recomienda</span></div><div><b>24 h</b><span>para responder tu solicitud</span></div></div>
+</section>
+
+<section class="sec" id="servicios">
+<h2 class="t">Todo lo que necesitas en un solo lugar</h2>
+<p class="lead">Desde elegir el inmueble hasta firmar ante notario, nuestro equipo se encarga de los detalles.</p>
+<div class="svc">
+<div><h3>Compra y venta</h3><p>Te ayudamos a encontrar el inmueble ideal o a vender el tuyo al mejor precio, con fotos profesionales y difusión.</p></div>
+<div><h3>Renta</h3><p>Publicamos tu propiedad, filtramos inquilinos y preparamos el contrato para que rentes con tranquilidad.</p></div>
+<div><h3>Avalúo</h3><p>Conoce el valor real de tu inmueble con un análisis de la zona, el estado y las ventas recientes cercanas.</p></div>
+<div><h3>Crédito hipotecario</h3><p>Comparamos opciones de bancos e institutos para que elijas la mensualidad que sí puedes pagar.</p></div>
+<div><h3>Asesoría legal</h3><p>Revisamos escrituras, gravámenes y permisos antes de que firmes, para evitar problemas después.</p></div>
+<div><h3>Administración</h3><p>Cuidamos tu propiedad: cobranza de renta, mantenimiento y reportes mensuales.</p></div>
+</div>
+</section>
+
+<section class="sec">
+<h2 class="t">Cómo trabajamos</h2>
+<p class="lead">Un proceso corto y claro, de la primera llamada a la entrega de llaves.</p>
+<ol class="steps">
+<li><b>Platicamos</b><span>Conocemos tu presupuesto, la zona y el tipo de inmueble que buscas.</span></li>
+<li><b>Visitamos</b><span>Agendamos recorridos y te mostramos solo opciones que encajan contigo.</span></li>
+<li><b>Negociamos</b><span>Revisamos documentos y cerramos un precio justo para ambas partes.</span></li>
+<li><b>Entregamos</b><span>Te acompañamos en la firma y en la entrega de llaves.</span></li>
+</ol>
+</section>
+
+<section class="sec">
+<h2 class="t">Lo que dicen nuestros clientes</h2>
+<div class="quotes" style="margin-top:22px">
+<figure><blockquote>“Nos explicaron cada documento antes de firmar. Compramos nuestra primera casa sin dudas.”</blockquote><figcaption>Mariana R., compradora en Monterrey</figcaption></figure>
+<figure><blockquote>“Vendí mi departamento en seis semanas y al precio que esperaba.”</blockquote><figcaption>Jorge T., vendedor en Tampico</figcaption></figure>
+<figure><blockquote>“Se encargan de todo con mis inquilinos. Yo solo recibo el reporte cada mes.”</blockquote><figcaption>Laura V., propietaria en Querétaro</figcaption></figure>
+</div>
+</section>
+
+<section class="sec" id="preguntas">
+<h2 class="t">Preguntas frecuentes</h2>
+<div class="faq" style="margin-top:18px">
+<details><summary>¿Cuánto cuesta el servicio para comprar?</summary><p>Si compras, no pagas comisión a InmoCasa: la comisión la cubre quien vende.</p></details>
+<details><summary>¿Puedo visitar un inmueble antes de decidir?</summary><p>Sí. Solicita información en la ficha del inmueble y agendamos una visita en el horario que prefieras.</p></details>
+<details><summary>¿Me ayudan con el crédito hipotecario?</summary><p>Sí. Comparamos opciones y te ayudamos a reunir los documentos para tu solicitud.</p></details>
+<details><summary>¿Qué documentos necesito para vender mi propiedad?</summary><p>Escritura, identificación oficial, comprobante de predial al corriente y constancia de no adeudo de servicios.</p></details>
+</div>
+</section>
+
+<section class="cta"><div><h2>¿Quieres vender o rentar tu inmueble?</h2><p>Te damos un avalúo y un plan de venta sin compromiso.</p></div><button class="btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Solicitar avalúo</button></section>
+</main>
+<footer><div class="wrap"><div class="fgrid">
+<div><div class="logo" style="margin-bottom:8px">InmoCasa</div><p>Compra, venta y renta de inmuebles con asesoría clara y cercana.</p></div>
+<div><h4>Explorar</h4><a href="#catalogo">Inmuebles</a><a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a></div>
+<div><h4>Ayuda</h4><a href="#preguntas">Preguntas frecuentes</a><a href="#contacto">Solicitar información</a></div>
+<div><h4>Contacto</h4><p>contacto@inmocasa.example</p><p>Lunes a sábado, 9:00 a 18:00</p></div>
+</div>© 2026 InmoCasa. Los precios y las características pueden cambiar sin previo aviso.</div></footer>
+
+<script>
+var P=[
+{id:1,t:'Casa',name:'Casa con jardín y alberca',city:'San Pedro, Monterrey',price:6850000,beds:4,baths:3,m2:320,lot:450,park:2,hue:205,feat:['Alberca','Jardín','Cocina integral','Cuarto de servicio'],d:'Casa de dos niveles en privada con vigilancia. Sala y comedor a doble altura, cocina abierta y terraza con vista al jardín.'},
+{id:2,t:'Departamento',name:'Departamento con vista a la ciudad',city:'Polanco, CDMX',price:5200000,beds:2,baths:2,m2:98,lot:0,park:1,hue:220,feat:['Gimnasio','Roof garden','Seguridad 24 h'],d:'Piso 14 con ventanales de piso a techo, cocina equipada y balcón. El edificio tiene gimnasio y terraza compartida.'},
+{id:3,t:'Casa',name:'Casa familiar en fraccionamiento',city:'Altamira, Tampico',price:2650000,beds:3,baths:2,m2:150,lot:200,park:2,hue:25,feat:['Patio','Cochera techada','Cerca de escuelas'],d:'Casa de una planta, lista para habitar, en zona tranquila con parque y escuelas a unas cuadras.'},
+{id:4,t:'Terreno',name:'Terreno residencial esquina',city:'El Marqués, Querétaro',price:1450000,beds:0,baths:0,m2:0,lot:300,park:0,hue:95,feat:['Esquina','Servicios a pie de lote','Escritura lista'],d:'Terreno plano de 300 m² en esquina, con agua, luz y drenaje en la calle. Ideal para construir casa propia.'},
+{id:5,t:'Departamento',name:'Departamento a estrenar',city:'Centro, Monterrey',price:1890000,beds:1,baths:1,m2:58,lot:0,park:1,hue:190,feat:['A estrenar','Mascotas permitidas','Lobby'],d:'Departamento de una recámara cerca de transporte y oficinas. Entrega inmediata con cocina y closets incluidos.'},
+{id:6,t:'Casa',name:'Residencia moderna minimalista',city:'Zapopan, Guadalajara',price:7400000,beds:4,baths:4,m2:380,lot:420,park:3,hue:260,feat:['Domótica','Jardín','Estudio'],d:'Diseño contemporáneo con luz natural en todos los espacios, cuatro recámaras con baño propio y estudio en planta alta.'},
+{id:7,t:'Casa',name:'Casa en privada con áreas verdes',city:'El Marqués, Querétaro',price:3350000,beds:3,baths:2,m2:170,lot:160,park:2,hue:150,feat:['Casa club','Parque','Vigilancia'],d:'Casa de dos niveles en privada con casa club, ciclovía y áreas verdes. Cocina con barra y vestidor en la principal.'},
+{id:8,t:'Departamento',name:'Departamento con terraza',city:'Altamira, Tampico',price:2100000,beds:2,baths:1,m2:82,lot:0,park:1,hue:35,feat:['Terraza','Elevador','Bodega'],d:'Departamento luminoso con terraza privada, cerca de la zona comercial. Incluye bodega y un cajón de estacionamiento.'}
+];
+var cur=P[0],si=0,$=function(i){return document.getElementById(i)};
+function money(n){return '$'+n.toLocaleString('es-MX')+' MXN'}
+function scene(p,v){
+ var h=p.hue,s='<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Foto de '+p.name+'">';
+ var sky='hsl('+h+',45%,88%)',wall='hsl('+h+',18%,'+(v==1?86:94)+'%)',roof='hsl('+h+',30%,30%)',gr='hsl(120,28%,52%)';
+ if(v==1){
+  s+='<rect width="400" height="260" fill="'+wall+'"/><rect y="190" width="400" height="70" fill="hsl(30,30%,62%)"/>'
+   +'<rect x="40" y="40" width="170" height="120" rx="3" fill="'+sky+'" stroke="hsl('+h+',10%,40%)" stroke-width="5"/><line x1="125" y1="40" x2="125" y2="160" stroke="hsl('+h+',10%,40%)" stroke-width="4"/>'
+   +'<circle cx="75" cy="85" r="16" fill="#fff" opacity=".8"/>'
+   +'<rect x="190" y="150" width="190" height="52" rx="10" fill="hsl('+h+',25%,34%)"/><rect x="198" y="128" width="174" height="36" rx="10" fill="hsl('+h+',25%,42%)"/>'
+   +'<rect x="300" y="60" width="64" height="44" fill="hsl('+h+',20%,70%)"/><rect x="60" y="205" width="120" height="30" rx="4" fill="hsl('+h+',15%,45%)"/>';
+ }else if(v==2||p.t=='Terreno'){
+  s+='<rect width="400" height="260" fill="'+sky+'"/><circle cx="330" cy="60" r="28" fill="#fff" opacity=".8"/><rect y="150" width="400" height="110" fill="'+gr+'"/>'
+   +'<rect x="30" y="138" width="340" height="6" fill="hsl(30,25%,45%)"/>';
+  for(var i=0;i<7;i++)s+='<rect x="'+(40+i*52)+'" y="128" width="5" height="24" fill="hsl(30,25%,40%)"/>';
+  s+='<rect x="68" y="90" width="10" height="70" fill="hsl(25,30%,30%)"/><circle cx="73" cy="78" r="38" fill="hsl(130,38%,32%)"/>'
+   +'<rect x="270" y="105" width="8" height="55" fill="hsl(25,30%,30%)"/><circle cx="274" cy="96" r="28" fill="hsl(130,38%,36%)"/>';
+  if(p.t!='Terreno')s+='<rect x="130" y="195" width="170" height="46" rx="14" fill="hsl(195,75%,62%)"/><rect x="140" y="203" width="150" height="30" rx="10" fill="hsl(195,80%,72%)"/>';
+ }else if(p.t=='Departamento'){
+  s+='<rect width="400" height="260" fill="'+sky+'"/><rect y="230" width="400" height="30" fill="hsl(210,8%,45%)"/>'
+   +'<rect x="110" y="20" width="180" height="212" fill="hsl('+h+',15%,58%)"/><rect x="290" y="70" width="60" height="162" fill="hsl('+h+',15%,48%)"/><rect x="50" y="100" width="60" height="132" fill="hsl('+h+',15%,52%)"/>';
+  for(var r=0;r<7;r++)for(var c=0;c<4;c++)s+='<rect x="'+(122+c*42)+'" y="'+(34+r*28)+'" width="30" height="18" fill="hsl(45,'+((r*c)%3?60:20)+'%,'+((r+c)%3?80:90)+'%)"/>';
+  s+='<rect x="188" y="206" width="24" height="26" fill="hsl('+h+',30%,25%)"/>';
+ }else{
+  s+='<rect width="400" height="260" fill="'+sky+'"/><circle cx="60" cy="50" r="24" fill="#fff" opacity=".8"/><rect y="210" width="400" height="50" fill="'+gr+'"/>'
+   +'<rect x="90" y="110" width="220" height="110" fill="'+wall+'" stroke="hsl('+h+',10%,70%)"/><rect x="60" y="150" width="60" height="70" fill="hsl('+h+',18%,88%)" stroke="hsl('+h+',10%,70%)"/>'
+   +'<polygon points="78,110 200,56 322,110" fill="'+roof+'"/><rect x="170" y="160" width="42" height="60" fill="hsl('+h+',35%,32%)"/>'
+   +'<rect x="108" y="130" width="46" height="36" fill="'+sky+'" stroke="hsl('+h+',10%,40%)" stroke-width="3"/><rect x="232" y="130" width="60" height="36" fill="'+sky+'" stroke="hsl('+h+',10%,40%)" stroke-width="3"/>'
+   +'<rect x="340" y="150" width="8" height="64" fill="hsl(25,30%,30%)"/><circle cx="344" cy="140" r="26" fill="hsl(130,38%,32%)"/>';
+ }
+ return s+'</svg>';
+}
+function card(p){
+ var b=p.t=='Terreno'?'<span>'+p.lot+' m² de terreno</span>':'<span>'+p.beds+' rec.</span><span>'+p.baths+' baños</span><span>'+p.m2+' m²</span>';
+ return '<button class="card" data-id="'+p.id+'" aria-pressed="'+(p.id==cur.id)+'">'+scene(p,0)+'<div class="in"><div class="price">'+money(p.price)+'</div><h3>'+p.name+'</h3><div class="loc">'+p.city+'</div><div class="meta">'+b+'</div></div></button>';
+}
+function render(){
+ var t=$('fType').value,pr=+$('fPrice').value||1e12,c=$('fCity').value,b=+$('fBeds').value;
+ var L=P.filter(function(p){return(!t||p.t==t)&&p.price<=pr&&(!c||p.city==c)&&p.beds>=b});
+ $('count').textContent=L.length+(L.length==1?' resultado':' resultados');
+ $('grid').innerHTML=L.length?L.map(card).join(''):'<div class="empty">No hay inmuebles con esos filtros. Prueba con otra zona o un precio más alto.</div>';
+}
+function show(p){
+ cur=p;si=0;
+ $('slider').innerHTML=[0,1,2].map(function(v){return '<div class="slide'+(v==0?' on':'')+'">'+scene(p,v)+'</div>'}).join('')
+  +'<button class="arrow l" aria-label="Foto anterior" data-d="-1">‹</button><button class="arrow r" aria-label="Foto siguiente" data-d="1">›</button>';
+ $('thumbs').innerHTML=[0,1,2].map(function(v){return '<button data-v="'+v+'" aria-label="Ver foto '+(v+1)+'" class="'+(v==0?'on':'')+'">'+scene(p,v)+'</button>'}).join('');
+ var info=p.t=='Terreno'?'<div><dt>Terreno</dt><dd>'+p.lot+' m²</dd></div><div><dt>Tipo</dt><dd>Residencial</dd></div><div><dt>Uso</dt><dd>Habitacional</dd></div><div><dt>Escritura</dt><dd>Lista</dd></div>'
+  :'<div><dt>Recámaras</dt><dd>'+p.beds+'</dd></div><div><dt>Baños</dt><dd>'+p.baths+'</dd></div><div><dt>Construcción</dt><dd>'+p.m2+' m²</dd></div><div><dt>Estacionamiento</dt><dd>'+p.park+'</dd></div>';
+ $('sbody').innerHTML='<h2>'+p.name+'</h2><div class="loc">'+p.t+' en '+p.city+'</div><span class="price">'+money(p.price)+'</span><dl>'+info+'</dl><p>'+p.d+'</p><ul class="feat">'+p.feat.map(function(f){return '<li>'+f+'</li>'}).join('')+'</ul>';
+ $('formFor').textContent='Consulta sobre: '+p.name+'. Un asesor te responde en menos de un día hábil.';
+ $('msg').value='Me interesa «'+p.name+'» en '+p.city+'. Quisiera más información y agendar una visita.';
+ $('ok').style.display='none';
+}
+function go(i){
+ var s=document.querySelectorAll('.slide'),t=document.querySelectorAll('#thumbs button');
+ si=(i+3)%3;s.forEach(function(e,k){e.classList.toggle('on',k==si)});t.forEach(function(e,k){e.classList.toggle('on',k==si)});
+}
+function send(e){e.preventDefault();$('ok').style.display='block';return false}
+(function(){
+ var cs=[];P.forEach(function(p){if(cs.indexOf(p.city)<0)cs.push(p.city)});
+ $('fCity').innerHTML+=cs.map(function(c){return '<option>'+c+'</option>'}).join('');
+ ['fType','fPrice','fCity','fBeds'].forEach(function(i){$(i).addEventListener('change',render)});
+ $('go').addEventListener('click',function(){render();$('catalogo').scrollIntoView({behavior:'smooth'})});
+ $('grid').addEventListener('click',function(e){var c=e.target.closest('.card');if(!c)return;show(P.filter(function(p){return p.id==c.dataset.id})[0]);render();$('ficha').scrollIntoView({behavior:'smooth'})});
+ $('slider').addEventListener('click',function(e){var a=e.target.closest('.arrow');if(a)go(si+ +a.dataset.d)});
+ $('thumbs').addEventListener('click',function(e){var b=e.target.closest('button');if(b)go(+b.dataset.v)});
+ render();show(P[0]);
+})();
+</script>
+</body>
+</html>

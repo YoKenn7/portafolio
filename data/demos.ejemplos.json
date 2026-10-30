@@ -1,0 +1,52 @@
+[
+  {
+    "id": "boda-ana-luis",
+    "cat": "invitaciones",
+    "sub": "bodas",
+    "title": "Invitación de boda",
+    "desc": "Cuenta regresiva y confirmación.",
+    "cover": "💌",
+    "status": "ready",
+    "featured": false,
+    "_nota": "TIPO 1 (página HTML): sin src. La ruta se calcula sola: demos/invitaciones/bodas/boda-ana-luis/index.html"
+  },
+  {
+    "id": "ferreteria",
+    "cat": "software",
+    "sub": "comerciales",
+    "title": "Sistema para ferretería",
+    "desc": "Inventario y punto de venta.",
+    "cover": "demos/software/comerciales/ferreteria/portada.jpg",
+    "video": "demos/software/comerciales/ferreteria/video.mp4",
+    "status": "ready",
+    "featured": false,
+    "_nota": "TIPO 2 (video propio). Alternativa: \"yt\":\"ID_DE_YOUTUBE\". Todo vive dentro de la carpeta del proyecto."
+  },
+  {
+    "id": "barberia",
+    "cat": "software",
+    "sub": "servicios",
+    "title": "Sistema para barbería",
+    "desc": "Citas y caja.",
+    "cover": "demos/software/servicios/barberia/portada.jpg",
+    "images": [
+      "demos/software/servicios/barberia/1.jpg",
+      "demos/software/servicios/barberia/2.jpg"
+    ],
+    "status": "ready",
+    "featured": false,
+    "_nota": "TIPO 3 (capturas)."
+  },
+  {
+    "id": "herramienta-externa",
+    "cat": "automatizacion",
+    "sub": "documentos",
+    "title": "Herramienta externa",
+    "desc": "Se abre en otra pestaña.",
+    "cover": "⚙️",
+    "link": "https://ejemplo.com",
+    "status": "ready",
+    "featured": false,
+    "_nota": "TIPO 4 (enlace externo)."
+  }
+]

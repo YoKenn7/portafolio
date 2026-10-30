@@ -1,0 +1,52 @@
+[
+  {
+    "id": "restaurante-01",
+    "cat": "desarrollo-web",
+    "sub": "restaurantes",
+    "title": "Restaurante Demo 01",
+    "desc": "Menú por categorías, información del local y reservación simulada.",
+    "cover": "🍽️",
+    "status": "ready",
+    "featured": true
+  },
+  {
+    "id": "cafe-ambar",
+    "cat": "desarrollo-web",
+    "sub": "restaurantes",
+    "title": "Cafe Ambar",
+    "desc": "Menú por categorías, información del local y reservación simulada.",
+    "cover": "🍽️",
+    "status": "ready",
+    "featured": true
+  },
+  {
+    "id": "hamburguesas-lopez",
+    "cat": "desarrollo-web",
+    "sub": "restaurantes",
+    "title": "Hamburguesas Lopez",
+    "desc": "Menú por categorías, información del local y reservación simulada.",
+    "cover": "🍽️",
+    "status": "ready",
+    "featured": true
+  },
+  {
+    "id": "xv-1",
+    "cat": "invitaciones",
+    "sub": "xv",
+    "title": "Invitación de Xv",
+    "desc": "Cuenta regresiva y confirmación.",
+    "cover": "💌",
+    "status": "ready",
+    "featured": true
+  },
+  {
+    "id": "inmb-1",
+    "cat": "desarrollo-web",
+    "sub": "inmobiliarias",
+    "title": "Inmobiliaria",
+    "desc": "Filtros de búsqueda,Galerías de fotos,Fichas de inmuebles,Formularios de contactoz",
+    "cover": "💌",
+    "status": "ready",
+    "featured": true
+  }
+]

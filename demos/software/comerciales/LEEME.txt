@@ -1,0 +1,8 @@
+Proyectos de «Sistemas comerciales» (Software empresarial).
+
+Crea aquí UNA CARPETA por proyecto, por ejemplo:  demos/software/comerciales/mi-proyecto/
+  - Si es una página o invitación: que tenga su index.html.
+  - Si es software: pon dentro su video, portada y capturas.
+Luego regístralo en data/demos.json con:
+  "cat": "software",  "sub": "comerciales",  "id": "mi-proyecto"   (el id = nombre de la carpeta)
+La ruta se calcula sola: demos/software/comerciales/<id>/index.html
